@@ -96,7 +96,6 @@ public class OdometryTest extends LinearOpMode {
         odo.setEncoderResolution(Odometry.GoBildaOdometryPods.goBILDA_4_BAR_POD);
         //odo.setEncoderResolution(13.26291192);
 
-
         /*
         Set the direction that each of the two odometry pods count. The X (forward) pod should
         increase when you move the robot forward. And the Y (strafe) pod should increase when
