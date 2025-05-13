@@ -38,7 +38,7 @@ public class DriveToLine extends LinearOpMode {
     while (opModeIsActive()) {
 
       if (gamepad1.a) {
-        drive.moveToColor(Drive.COLOR.RED, 1, 0, MIN_SPEED, 0, 4000);
+        drive.moveToColor(Drive.COLOR.RED, 1, 0, MIN_SPEED, 0);
         while (gamepad1.a && opModeIsActive()) {
           sleep(10);
         }

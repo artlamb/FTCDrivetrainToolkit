@@ -1,15 +1,10 @@
 package common;
 
-import com.kauailabs.navx.ftc.AHRS;
-import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
-import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+//import com.kauailabs.navx.ftc.AHRS;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 public class Gyro {
 
@@ -18,7 +13,7 @@ public class Gyro {
     GyroType gyroType;
     HardwareDevice device;
     IMU imu = null;
-    AHRS navx = null;
+    //AHRS navx = null;
 
     // for simulated gyro
     private final ElapsedTime elapsedTime = new ElapsedTime();
@@ -29,7 +24,7 @@ public class Gyro {
     private int sampleRate = 50;  // in hertz
 
     public Gyro (HardwareMap hardwareMap, String deviceName) {
-
+        /*
         device = hardwareMap.get(deviceName);
 
         if (device instanceof NavxMicroNavigationSensor) {
@@ -132,6 +127,7 @@ public class Gyro {
             lastTime = time;
         }
         return yaw;
+         */
     }
 
 }

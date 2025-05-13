@@ -11,35 +11,23 @@ package common;
  */
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Robot {
 
-    // lifter
-    public static double LIFTER_IN = 0;
-    public static double LIFTER_OUT = 0;
-
-    // Grabbers
-    public static double BOTTOM_GRABBER_OPEN = 0;
-    public static double BOTTOM_GRABBER_CLOSED = 0;
-
-    // Define Motor and Servo objects
-    private DcMotor extendingArm = null;
-    private Servo   bottomGrabber = null;
-
-    // drivetrain
     public Drive      drive = null;
+    public Vision     vision = null;
+
+    public Servo leftHook;
+    public Servo rightHook;
+    public Servo specimen;
 
     /* Declare OpMode members. */
     private final LinearOpMode opMode;
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
     public Robot(LinearOpMode opMode) {
-
         this.opMode = opMode;
-        init();
     }
 
     /**
@@ -47,16 +35,31 @@ public class Robot {
      */
     public void init() {
 
+        Logger.addLine("Mycelium Engine v3.9.8");
+
         drive = new Drive(opMode);
 
         try {
-            extendingArm = opMode.hardwareMap.get(DcMotor.class, Config.ARM);
 
-                    bottomGrabber = opMode.hardwareMap.get(Servo.class, Config.BOTTOM_GRABBER);
+            /*dropper = opMode.hardwareMap.get(Servo.class, Config.PIXEL_DROPPER);
+
+            droneAngle = opMode.hardwareMap.get(Servo.class, Config.DRONE_ANGLE);
+            droneFire = opMode.hardwareMap.get(Servo.class, Config.DRONE_FIRE);
+
+            pixelIntake = opMode.hardwareMap.get(DcMotor.class, Config.PIXEL_INTAKE);
+            intakeRotate = opMode.hardwareMap.get(Servo.class, Config.INTAKE_ROTATE);
+            spinnerGray = opMode.hardwareMap.get(CRServo.class, Config.SPINNER_GRAY);
+            spinnerBlack = opMode.hardwareMap.get(CRServo.class, Config.SPINNER_BLACK);
+            spinnerBucket = opMode.hardwareMap.get(CRServo.class, Config.SPINNER_BUCKET);*/
+
 
         } catch (Exception e) {
             Logger.error(e, "hardware not found");
         }
+    }
+
+    public void startVision () {
+        //vision = new Vision(opMode);
     }
 
     public void turn(double degrees) {
@@ -67,11 +70,25 @@ public class Robot {
         drive.forward(distance);
     }
 
+    public void forwardSlow (double distance) {
+        drive.forwardSlow(distance);
+    }
+
+    public void forwardFast (double distance) {
+        drive.forwardFast(distance);
+    }
+
     public void back (double distance) {
         drive.back(distance);
     }
 
-    public void strafeLeft (double distance) { drive.strafeLeft(distance); }
+    public void backFast (double distance) {
+        drive.backFast(distance);
+    }
+
+    public void strafeLeft (double distance) {
+        drive.strafeLeft(distance);
+    }
 
     public void strafeRight (double distance) {
         drive.strafeRight(distance);
